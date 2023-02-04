@@ -27,7 +27,7 @@ namespace Autohand {
         [Tooltip("This offsets the grab transistion by this percent when active [0-1 range]")]
         public float grabTransitionOffset = 0;
         [EnableIf("useGrabTransition")]
-        [Tooltip("This sets the position of the hand based on its [(gripAxis + grabTransitionOffset) * grabDistanceMultiplyer] -> gripAxis is set on the HandControllerLink component on the main hand")]
+        [Tooltip("This sets the origin of the hand based on its [(gripAxis + grabTransitionOffset) * grabDistanceMultiplyer] -> gripAxis is set on the HandControllerLink component on the main hand")]
         public float grabDistanceMultiplyer = 2f;
         [Tooltip("This sets the pose of the hand based on its [(gripAxis + grabTransitionOffset) * grabDistanceMultiplyer] -> gripAxis is set on the HandControllerLink component on the main hand")]
         [EnableIf("useGrabTransition")]

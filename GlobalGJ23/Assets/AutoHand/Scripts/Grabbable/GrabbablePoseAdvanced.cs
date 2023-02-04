@@ -31,7 +31,7 @@ namespace Autohand {
         [Header("Requires Gizmos Enabled")]
         [Tooltip("Helps test pose by setting the angle of the editor hand, REQUIRES GIZMOS ENABLED")]
         public int testAngle = 0;
-        [Tooltip("Helps test pose by setting the range position of the editor hand, REQUIRES GIZMOS ENABLED")]
+        [Tooltip("Helps test pose by setting the range origin of the editor hand, REQUIRES GIZMOS ENABLED")]
         public float testRange = 0;
 
 

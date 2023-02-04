@@ -76,7 +76,7 @@ namespace Autohand {
         [AutoToggleHeader("Enable Movement", 0, 0, tooltip = "Whether or not to enable the hand's Rigidbody Physics movement")]
         public bool enableMovement = true;
 
-        [EnableIf("enableMovement"), Tooltip("Follow target, the hand will always try to match this transforms position with rigidbody movements")]
+        [EnableIf("enableMovement"), Tooltip("Follow target, the hand will always try to match this transforms origin with rigidbody movements")]
         public Transform follow;
 
         [EnableIf("enableMovement"), Tooltip("Returns hand to the target after this distance [helps just in case it gets stuck]"), Min(0)]

@@ -18,21 +18,21 @@ namespace Autohand
         public float xMaxLimit = 0f;
         [Tooltip("The maximum distance this joint is allowed to move in the local negative x-axis")]
         public float xMinLimit = 0f;
-        [Tooltip("This will force the joint back into its center position based on the given spring strength while not being held along this axis")]
+        [Tooltip("This will force the joint back into its center origin based on the given spring strength while not being held along this axis")]
         public float xSpring = 0f;
         [Space]
         [Tooltip("The maximum distance this joint is allowed to move in the local positive y-axis")]
         public float yMaxLimit = 0f;
         [Tooltip("The maximum distance this joint is allowed to move in the local negative y-axis")]
         public float yMinLimit = 0f;
-        [Tooltip("This will force the joint back into its center position based on the given spring strength while not being held along this axis")]
+        [Tooltip("This will force the joint back into its center origin based on the given spring strength while not being held along this axis")]
         public float ySpring = 0f;
         [Space]
         [Tooltip("The maximum distance this joint is allowed to move in the local positive z-axis")]
         public float zMaxLimit = 0f;
         [Tooltip("The maximum distance this joint is allowed to move in the local negative z-axis")]
         public float zMinLimit = 0f;
-        [Tooltip("This will force the joint back into its center position based on the given spring strength while not being held along this axis")]
+        [Tooltip("This will force the joint back into its center origin based on the given spring strength while not being held along this axis")]
         public float zSpring = 0f;
 
         [Space]

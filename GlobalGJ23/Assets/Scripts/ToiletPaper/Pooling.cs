@@ -8,8 +8,7 @@ public class Pooling : MonoBehaviour {
 
     [SerializeField] private Vector3 poolStoragePoint;
     [SerializeField] private float poolingDelay;
-    [SerializeField] private Vector3 initialVelocity;
-    [SerializeField] private Vector3 position;
+    [SerializeField] private GameObject origin;
 
     [SerializeField] private List<GameObject> pool;
     [SerializeField] private Material lineRendererMaterial;
@@ -21,20 +20,25 @@ public class Pooling : MonoBehaviour {
     private Rigidbody last;
     Vector3 zero = new(0, 0, 0);
 
-    private IEnumerator Start() {
+    private void Start() {
         GeneratePool();
-        for (int i = 0; i < 10; i++) {
-            yield return new WaitForSeconds(1);
-            while (currentIndex < poolCount) {
-                PullFromPool();
-                yield return new WaitForSeconds(poolingDelay);
-            }
-            while (first.velocity.magnitude > maxMagnitude || last.velocity.magnitude > maxMagnitude) {
-                yield return new WaitForFixedUpdate();
-            }
-            
-            ResetPool();
+    }
+
+    public void CommitPool() {
+        StartCoroutine(RunPooling());
+    }
+
+    private IEnumerator RunPooling() {
+        yield return new WaitForSeconds(poolingDelay);
+        while (currentIndex < poolCount) {
+            PullFromPool();
+            yield return new WaitForSeconds(poolingDelay);
         }
+        while (first.velocity.magnitude > maxMagnitude || last.velocity.magnitude > maxMagnitude) {
+            yield return new WaitForFixedUpdate();
+        }
+
+        ResetPool();
     }
 
     private void GeneratePool() {
@@ -64,11 +68,11 @@ public class Pooling : MonoBehaviour {
         square.SetActive(true);
         Rigidbody body = square.GetComponent<Rigidbody>();
         if (currentIndex == 0) {
-            body.position = position;
-            body.velocity = initialVelocity;
+            body.position = origin.transform.position;
+            body.velocity = origin.GetComponent<Rigidbody>().velocity;
         }
         else {
-            body.position = pool[currentIndex - 1].transform.TransformPoint(-0.1f, 0, 0);
+            body.position = pool[currentIndex - 1].transform.position - pool[currentIndex - 1].transform.forward * 0.1f;
             body.velocity = currentVelocity;
         }
         currentVelocity = pool[0].GetComponent<Rigidbody>().velocity;
