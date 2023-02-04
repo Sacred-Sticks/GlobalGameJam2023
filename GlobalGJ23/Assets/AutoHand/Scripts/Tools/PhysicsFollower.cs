@@ -6,7 +6,7 @@ namespace Autohand{
     [RequireComponent(typeof(Rigidbody)), DefaultExecutionOrder(-1)]
     public class PhysicsFollower : MonoBehaviour{
         [Header("Follow Settings"), Space]
-        [Tooltip("Follow target, the hand will always try to match this transforms rotation and position with rigidbody movements")]
+        [Tooltip("Follow target, the hand will always try to match this transforms rotation and origin with rigidbody movements")]
         public Transform follow;
 
         [Tooltip("Stops hand physics follow - to freeze from all forces change rigidbody to kinematic or change rigidbody constraints")]
@@ -15,7 +15,7 @@ namespace Autohand{
         [Tooltip("Stops hand physics follow - to freeze from all forces change rigidbody to kinematic or change rigidbody constraints")]
         public bool freezeRot = false;
         
-        [Tooltip("This will offset the position without offsetting the rotation pivot")]
+        [Tooltip("This will offset the origin without offsetting the rotation pivot")]
         public Vector3 followPositionOffset;
         public Vector3 rotationOffset;
 

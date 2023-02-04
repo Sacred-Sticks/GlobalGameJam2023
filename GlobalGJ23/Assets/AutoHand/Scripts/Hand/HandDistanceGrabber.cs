@@ -37,7 +37,7 @@ namespace Autohand {
         public float flickThreshold = 7f;
 
 
-        [Tooltip("The amount you need to move your hand from the select position to trigger the grab")]
+        [Tooltip("The amount you need to move your hand from the select origin to trigger the grab")]
         [HideIf("useFlickPull")]
         public float pullGrabDistance = 0.1f;
 

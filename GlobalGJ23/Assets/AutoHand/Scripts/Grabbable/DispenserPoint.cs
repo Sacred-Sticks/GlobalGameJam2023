@@ -23,7 +23,7 @@ namespace Autohand {
         public bool disableBody = false;
         [NaughtyAttributes.HideIf("disableBody"), Tooltip("Whether or not objects placed in the dispense point should be set to kinematic on placed or not")]
         public bool isKinematic = true;
-        [Tooltip("If true the object will not just reset its position on reset it will be destroyed and a new copy will be placed. Less performant but important for things like ammo that should always respawn as new clips full")]
+        [Tooltip("If true the object will not just reset its origin on reset it will be destroyed and a new copy will be placed. Less performant but important for things like ammo that should always respawn as new clips full")]
         public bool destroyOnReset = false;
         [Tooltip("The maximum distance a dispensed object can move from the point before the next object is dispensed")]
         public float maxDistance = 1f;

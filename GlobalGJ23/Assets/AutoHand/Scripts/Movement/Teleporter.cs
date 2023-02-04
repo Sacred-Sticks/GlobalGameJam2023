@@ -32,7 +32,7 @@ namespace Autohand{
         public Gradient canTeleportColor = new Gradient(){ colorKeys = new GradientColorKey[] { new GradientColorKey(){ color = Color.green, time = 0 } } };
         public Gradient cantTeleportColor = new Gradient(){ colorKeys = new GradientColorKey[] { new GradientColorKey(){ color = Color.red, time = 0 } } };
 
-        [Tooltip("This gameobject will match the position of the teleport point when aiming")]
+        [Tooltip("This gameobject will match the origin of the teleport point when aiming")]
         public GameObject indicator;
 
         [Header("Unity Events")]

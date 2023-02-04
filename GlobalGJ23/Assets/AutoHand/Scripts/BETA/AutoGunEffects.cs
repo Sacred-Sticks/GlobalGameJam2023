@@ -19,7 +19,7 @@ namespace Autohand {
         public ParticleSystem shootParticle;
         [Tooltip("The lifetime of the ejected bullets before they are added to the pool")]
         public float ejectedBulletLifetime = 3f;
-        [Tooltip("The position and rotation where the bullets are instantiated")]
+        [Tooltip("The origin and rotation where the bullets are instantiated")]
         public Transform shellEjectionSpawnPoint;
         [Tooltip("The forward direction of this point represents the direction the shells should be ejected")]
         public Transform shellEjectionDirection;
