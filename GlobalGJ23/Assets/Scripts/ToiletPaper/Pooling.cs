@@ -1,30 +1,97 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Pooling : MonoBehaviour
-{
+public class Pooling : MonoBehaviour {
     [SerializeField] private GameObject poolingTarget;
     [SerializeField] private int poolCount;
 
     [SerializeField] private Vector3 poolStoragePoint;
+    [SerializeField] private float poolingDelay;
+    [SerializeField] private Vector3 initialVelocity;
+    [SerializeField] private Vector3 position;
 
-    private void Start() {
+    [SerializeField] private List<GameObject> pool;
+    [SerializeField] private Material lineRendererMaterial;
+    [SerializeField] private float maxMagnitude;
+
+    private Vector3 currentVelocity;
+    private int currentIndex;
+    private Rigidbody first;
+    private Rigidbody last;
+    Vector3 zero = new(0, 0, 0);
+
+    private IEnumerator Start() {
         GeneratePool();
+        for (int i = 0; i < 10; i++) {
+            yield return new WaitForSeconds(1);
+            while (currentIndex < poolCount) {
+                PullFromPool();
+                yield return new WaitForSeconds(poolingDelay);
+            }
+            while (first.velocity.magnitude > maxMagnitude || last.velocity.magnitude > maxMagnitude) {
+                yield return new WaitForFixedUpdate();
+            }
+            
+            ResetPool();
+        }
     }
 
     private void GeneratePool() {
         GameObject square = Instantiate(poolingTarget, poolStoragePoint, Quaternion.identity, transform);
         Rigidbody body = square.GetComponent<Rigidbody>();
-        body.isKinematic = false;
         Rigidbody prevBody = body;
-        HingeJoint joint;
+        first = body;
+        Joint joint = square.GetComponent<Joint>();
+        Destroy(joint);
+        pool.Add(square);
+        square.SetActive(false);
         for (int i = 0; i < poolCount - 1; i++) {
-            poolStoragePoint.x += 1f;
+            poolStoragePoint.x -= 1;
             square = Instantiate(poolingTarget, poolStoragePoint, Quaternion.identity, transform);
             body = square.GetComponent<Rigidbody>();
-            joint = square.GetComponent<HingeJoint>();
-            body.isKinematic = false;
+            joint = square.GetComponent<Joint>();
             joint.connectedBody = prevBody;
             prevBody = body;
+            pool.Add(square);
+            square.SetActive(false);
+        }
+        last = body;
+    }
+
+    private void PullFromPool() {
+        GameObject square = pool[currentIndex];
+        square.SetActive(true);
+        Rigidbody body = square.GetComponent<Rigidbody>();
+        if (currentIndex == 0) {
+            body.position = position;
+            body.velocity = initialVelocity;
+        }
+        else {
+            body.position = pool[currentIndex - 1].transform.TransformPoint(-0.1f, 0, 0);
+            body.velocity = currentVelocity;
+        }
+        currentVelocity = pool[0].GetComponent<Rigidbody>().velocity;
+        currentIndex++;
+    }
+
+    private void ResetPool() {
+        GameObject go = new("Toilet Paper Renderer");
+        LineRenderer lr = go.AddComponent<LineRenderer>();
+        lr.startWidth = 0.1f;
+        lr.endWidth = 0.1f;
+        lr.positionCount = 0;
+        lr.material = lineRendererMaterial;
+        lr.generateLightingData = true;
+        currentIndex = 0;
+
+        foreach (var point in pool) {
+            lr.positionCount++;
+            lr.SetPosition(lr.positionCount - 1, point.transform.position);
+
+            point.transform.rotation = Quaternion.identity;
+            point.SetActive(false);
+            point.GetComponent<Rigidbody>().velocity = new();
         }
     }
 }
