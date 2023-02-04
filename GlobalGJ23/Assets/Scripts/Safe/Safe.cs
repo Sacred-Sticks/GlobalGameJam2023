@@ -16,8 +16,11 @@ public class Safe : MonoBehaviour
         keyedEntry.Clear();
     }
 
-    public bool CanOpen()
+    public bool CanOpen
     {
-        return combination.Equals(keyedEntry.ToString());
+        get
+        {
+            return keyedEntry.ToString().EndsWith(combination);
+        }
     }
 }

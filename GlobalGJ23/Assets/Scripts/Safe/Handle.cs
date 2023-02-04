@@ -1,18 +1,55 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Handle : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private float restDegrees = 0;
+    [SerializeField] private float turnedDegrees = -40;
+    [SerializeField] private float transitionSeconds = 0.5f;
+    private Safe safe;
+    private Hinge hinge;
+
     void Start()
     {
-        
+        safe = GetComponentInParent<Safe>();
+        hinge = GetComponentInParent<Hinge>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnMouseDown()
     {
-        
+        Turn();
+    }
+
+    public void Turn()
+    {
+        StopAllCoroutines();
+        StartCoroutine(TurnRoutine());
+    }
+
+    IEnumerator TurnRoutine()
+    {
+        float startDegrees = transform.eulerAngles.z;
+        for (float t = 0; t < transitionSeconds; t += Time.deltaTime)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.SmoothStep(startDegrees, turnedDegrees, t / transitionSeconds));
+            yield return null;
+        }
+
+        transform.rotation = Quaternion.Euler(0, 0, turnedDegrees);
+
+        if (safe.CanOpen)
+        {
+            hinge.Open();
+        }
+        else
+        {
+            for (float t = 0; t < transitionSeconds; t += Time.deltaTime)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, Mathf.SmoothStep(turnedDegrees, startDegrees, t / transitionSeconds));
+                yield return null;
+            }
+
+            transform.rotation = Quaternion.Euler(0, restDegrees, 0);
+        }
     }
 }
