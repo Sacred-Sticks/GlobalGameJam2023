@@ -7,6 +7,7 @@ public class FreezeTimer : MonoBehaviour
 {
     // Time to freeze in seconds
     [SerializeField] public float maxTime = 180.0f;
+    [SerializeField] private SceneHandler sceneHandler;
     public float freezeTime;
     // Whether to update the timer and perform its actions
     public bool timerActive = true;
@@ -58,7 +59,7 @@ public class FreezeTimer : MonoBehaviour
     }
     IEnumerator WaitThenTransition()
     {
-        yield return new WaitForSeconds(5);
-        // Do a transition
+        yield return new WaitForSeconds(3);
+        sceneHandler.CreateTransition(0, false);
     }
 }
