@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneHandler : MonoBehaviour
 {
@@ -12,12 +13,28 @@ public class SceneHandler : MonoBehaviour
     // Is the whiteout still visible?
     public static bool overlayEnabled = false;
     // The whiteout overlay used for transitions
+    [SerializeField] public Image transitionOverlay;
+    private Color color;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (transitionOverlay != null)
+        {
+            color = transitionOverlay.color;
+            if (overlayEnabled)
+            {
+                while (transitionOverlay.color.a > 0f)
+                {
+                    float timePassed = Time.deltaTime;
+                    color.a -= timePassed;
+                    transitionOverlay.color = color;
+                    timePassed = 0f;
+                }
+            }
+        }
+        else Debug.LogWarning("Transition overlay not specified. No visuals will be used for scene transitions.");
         overlayEnabled = false;
-        // Get the whiteout overlay
     }
 
     // Update is called once per frame
@@ -28,10 +45,17 @@ public class SceneHandler : MonoBehaviour
 
     public void CreateTransition(int newScene, bool useWhiteout)
     {
-        if (useWhiteout)
+        if (useWhiteout && transitionOverlay != null)
         {
             // Fade in the whiteout over a second
             overlayEnabled = true;
+            while (transitionOverlay.color.a < 1f)
+            {
+                float timePassed = Time.deltaTime;
+                color.a += timePassed;
+                transitionOverlay.color = color;
+                timePassed = 0f;
+            }
         }
         SceneManager.LoadScene(newScene);
     }
