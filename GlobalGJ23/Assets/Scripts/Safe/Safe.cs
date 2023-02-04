@@ -20,7 +20,7 @@ public class Safe : MonoBehaviour
     {
         get
         {
-            return keyedEntry.ToString().EndsWith(combination);
+            return combination.Equals(keyedEntry.ToString());
         }
     }
 }
