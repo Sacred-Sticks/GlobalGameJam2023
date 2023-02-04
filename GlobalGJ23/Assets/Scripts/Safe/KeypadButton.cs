@@ -11,7 +11,7 @@ public class KeypadButton : MonoBehaviour
     
     void Start()
     {
-        unpressedPosition = transform.position;
+        unpressedPosition = transform.localPosition;
         pressedPosition = unpressedPosition + pressDistance * Vector3.back;
         safe = GetComponentInParent<Safe>();
         key = GetComponentInChildren<TextMeshPro>().text[0];
@@ -24,11 +24,11 @@ public class KeypadButton : MonoBehaviour
         else
             safe.Press(key);
 
-        transform.position = pressedPosition;
+        transform.localPosition = pressedPosition;
     }
 
     void OnMouseUp()
     {
-        transform.position = unpressedPosition;
+        transform.localPosition = unpressedPosition;
     }
 }

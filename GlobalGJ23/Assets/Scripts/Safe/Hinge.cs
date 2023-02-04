@@ -21,13 +21,13 @@ public class Hinge : MonoBehaviour
 
     IEnumerator SmoothStepTo(float targetDegrees)
     {
-        float startDegrees = transform.eulerAngles.y;
+        float startDegrees = transform.localRotation.eulerAngles.y;
         for (float t = 0; t < transitionSeconds; t += Time.deltaTime)
         {
-            transform.rotation = Quaternion.Euler(0, Mathf.SmoothStep(startDegrees, targetDegrees, t / transitionSeconds), 0);
+            transform.localRotation = Quaternion.Euler(0, Mathf.SmoothStep(startDegrees, targetDegrees, t / transitionSeconds), 0);
             yield return null;
         }
 
-        transform.rotation = Quaternion.Euler(0, targetDegrees, 0);
+        transform.localRotation = Quaternion.Euler(0, targetDegrees, 0);
     }
 }

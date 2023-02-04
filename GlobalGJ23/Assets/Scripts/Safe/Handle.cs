@@ -28,14 +28,14 @@ public class Handle : MonoBehaviour
 
     IEnumerator TurnRoutine()
     {
-        float startDegrees = transform.eulerAngles.z;
+        float startDegrees = transform.localRotation.eulerAngles.z;
         for (float t = 0; t < transitionSeconds; t += Time.deltaTime)
         {
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.SmoothStep(startDegrees, turnedDegrees, t / transitionSeconds));
+            transform.localRotation = Quaternion.Euler(0, 0, Mathf.SmoothStep(startDegrees, turnedDegrees, t / transitionSeconds));
             yield return null;
         }
 
-        transform.rotation = Quaternion.Euler(0, 0, turnedDegrees);
+        transform.localRotation = Quaternion.Euler(0, 0, turnedDegrees);
 
         if (safe.CanOpen)
         {
@@ -45,11 +45,11 @@ public class Handle : MonoBehaviour
         {
             for (float t = 0; t < transitionSeconds; t += Time.deltaTime)
             {
-                transform.rotation = Quaternion.Euler(0, 0, Mathf.SmoothStep(turnedDegrees, startDegrees, t / transitionSeconds));
+                transform.localRotation = Quaternion.Euler(0, 0, Mathf.SmoothStep(turnedDegrees, startDegrees, t / transitionSeconds));
                 yield return null;
             }
 
-            transform.rotation = Quaternion.Euler(0, restDegrees, 0);
+            transform.localRotation = Quaternion.Euler(0, restDegrees, 0);
         }
     }
 }
