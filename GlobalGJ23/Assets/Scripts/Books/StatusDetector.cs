@@ -23,12 +23,12 @@ public class StatusDetector : MonoBehaviour
         bottom = bottomCover.transform.rotation.eulerAngles.z;
         if (bottom > 350)
             bottom -= 360;
-        if (!bookOpen && Mathf.Abs(top + bottom) > bookOpenAngle) {
+        if (!bookOpen && Mathf.Abs(top - bottom) > bookOpenAngle) {
             bookOpened.Invoke();
             bookOpen = true;
         }
 
-        if (bookOpen && Mathf.Abs(top + bottom) < bookCloseAngle) {
+        if (bookOpen && Mathf.Abs(top - bottom) < bookCloseAngle) {
             bookClosed.Invoke();
             bookOpen = false;
         }

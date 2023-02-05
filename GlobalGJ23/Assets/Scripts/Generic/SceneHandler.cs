@@ -24,7 +24,7 @@ public class SceneHandler : MonoBehaviour
                 color.a -= timePassed;
                 transitionOverlay.color = color;
                 timePassed = 0f;
-                Debug.Log(transitionOverlay.color.a);
+                //Debug.Log(transitionOverlay.color.a);
             }
         }
         else Debug.LogWarning("Transition overlay not specified. No visuals will be used for scene transitions.");

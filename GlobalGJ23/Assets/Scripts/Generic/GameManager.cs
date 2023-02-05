@@ -6,16 +6,12 @@ public class GameManager : MonoBehaviour {
 
     private SceneHandler sceneHandler;
 
-    private int activeScene;
-    private int targetScene;
-
     private const int GRANDMAHOUSE = 0;
     private const int TPHOUSE = 1;
     private const int BAR = 2;
 
     private void Awake() {
         sceneHandler = GetComponent<SceneHandler>();
-        activeScene = SceneManager.GetActiveScene().buildIndex;
     }
 
     //private void Update() {
@@ -25,53 +21,34 @@ public class GameManager : MonoBehaviour {
     //    }
     //}
 
-    private void UpdateStatus() {
+    private int UpdateStatus() {
         switch (gameStatus.level) {
             case StatusObject.Level.Menu1:
                 gameStatus.level = StatusObject.Level.TeenageYears;
-                break;
+                return TPHOUSE;
             case StatusObject.Level.TeenageYears:
                 gameStatus.level = StatusObject.Level.Menu2;
-                break;
+                return GRANDMAHOUSE;
             case StatusObject.Level.Menu2:
                 gameStatus.level = StatusObject.Level.AdultYears;
-                break;
+                return BAR;
             case StatusObject.Level.AdultYears:
                 gameStatus.level = StatusObject.Level.Menu3;
-                break;
+                return GRANDMAHOUSE;
             case StatusObject.Level.Menu3:
-                gameStatus.level = StatusObject.Level.Menu3;
-                break;
+                gameStatus.level = StatusObject.Level.TeenageYears;
+                return TPHOUSE;
             case StatusObject.Level.FightLostMenu:
                 gameStatus.level = StatusObject.Level.Menu2;
-                break;
+                return GRANDMAHOUSE;
             default:
                 break;
         }
+        return GRANDMAHOUSE;
     }
 
     public void NextLevel() {
-        UpdateStatus();
-        int nextLevel = 0;
-        switch (gameStatus.level) {
-            case StatusObject.Level.Menu1:
-                nextLevel = 0;
-                break;
-            case StatusObject.Level.TeenageYears:
-                nextLevel = 1;
-                break;
-            case StatusObject.Level.Menu2:
-                nextLevel = 0;
-                break;
-            case StatusObject.Level.AdultYears:
-                nextLevel = 2;
-                break;
-            case StatusObject.Level.Menu3:
-                nextLevel = 0;
-                break;
-            default:
-                break;
-        }
-        sceneHandler.CreateTransition(targetScene);
+        int nextLevel = UpdateStatus();
+        sceneHandler.CreateTransition(nextLevel);
     }
 }

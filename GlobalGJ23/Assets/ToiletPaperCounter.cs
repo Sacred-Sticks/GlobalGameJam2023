@@ -3,10 +3,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using Autohand;
 using System.Linq;
+using System.Collections;
 
 public class ToiletPaperCounter : MonoBehaviour
 {
     [SerializeField] private UnityEvent OnThrowingFinished;
+    [SerializeField] private UnityEvent OnNextLevel;
 
     private int count;
 
@@ -20,8 +22,14 @@ public class ToiletPaperCounter : MonoBehaviour
         Destroy(grabbable);
         Debug.Log($"Count at {count}");
         if (count == 0) {
-            OnThrowingFinished.Invoke();
+            StartCoroutine(NextLevel(5));
         }
+    }
+
+    private IEnumerator NextLevel(int timeDelay) {
+        OnThrowingFinished.Invoke();
+        yield return new WaitForSeconds(timeDelay);
+        OnNextLevel.Invoke();
     }
 
 }
