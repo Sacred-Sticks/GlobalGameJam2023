@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:GlobalGJ23/Assets/Scenes/BarScene/NavMesh.asset.meta
 guid: 24f829e73be288147b3b28601f50d23c
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 23800000
+=======
+guid: ab238eb06e2aebf479ba5b1c07d57878
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+>>>>>>> Stashed changes:GlobalGJ23/Assets/Materials/TP_House/bush2.mat.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 

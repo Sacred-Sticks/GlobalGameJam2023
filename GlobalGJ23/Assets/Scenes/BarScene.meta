@@ -1,8 +1,14 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:GlobalGJ23/Assets/Scenes/BarScene.meta
 guid: e68d1144f107e3c448c218758796d45c
 folderAsset: yes
 DefaultImporter:
+=======
+guid: 3a53967ba98261c43af638d3abb8138c
+NativeFormatImporter:
+>>>>>>> Stashed changes:GlobalGJ23/Assets/Materials/TP_House/bush1.mat.meta
   externalObjects: {}
+  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
