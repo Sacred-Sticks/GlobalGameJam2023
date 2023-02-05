@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
     [SerializeField] private StatusObject gameStatus;
 
     private SceneHandler sceneHandler;
@@ -19,35 +18,60 @@ public class GameManager : MonoBehaviour
         activeScene = SceneManager.GetActiveScene().buildIndex;
     }
 
-    private void Update() {
-        CheckStatus();
-        if (activeScene != targetScene) {
-            sceneHandler.CreateTransition(targetScene);
-        }
-    }
+    //private void Update() {
+    //    CheckStatus();
+    //    if (activeScene != targetScene) {
+    //        sceneHandler.CreateTransition(targetScene);
+    //    }
+    //}
 
-    private void CheckStatus() {
+    private void UpdateStatus() {
         switch (gameStatus.level) {
             case StatusObject.Level.Menu1:
-                targetScene = GRANDMAHOUSE;
+                gameStatus.level = StatusObject.Level.TeenageYears;
                 break;
             case StatusObject.Level.TeenageYears:
-                targetScene = TPHOUSE;
+                gameStatus.level = StatusObject.Level.Menu2;
                 break;
             case StatusObject.Level.Menu2:
-                targetScene = GRANDMAHOUSE;
+                gameStatus.level = StatusObject.Level.AdultYears;
                 break;
             case StatusObject.Level.AdultYears:
-                targetScene = BAR;
+                gameStatus.level = StatusObject.Level.Menu3;
                 break;
             case StatusObject.Level.Menu3:
-                targetScene = GRANDMAHOUSE;
+                gameStatus.level = StatusObject.Level.Menu3;
                 break;
             case StatusObject.Level.FightLostMenu:
-                targetScene = GRANDMAHOUSE;
+                gameStatus.level = StatusObject.Level.Menu2;
                 break;
             default:
                 break;
         }
+    }
+
+    public void NextLevel() {
+        UpdateStatus();
+        int nextLevel = 0;
+        switch (gameStatus.level) {
+            case StatusObject.Level.Menu1:
+                nextLevel = 0;
+                break;
+            case StatusObject.Level.TeenageYears:
+                nextLevel = 1;
+                break;
+            case StatusObject.Level.Menu2:
+                nextLevel = 0;
+                break;
+            case StatusObject.Level.AdultYears:
+                nextLevel = 2;
+                break;
+            case StatusObject.Level.Menu3:
+                nextLevel = 0;
+                break;
+            default:
+                break;
+        }
+        sceneHandler.CreateTransition(targetScene);
     }
 }
