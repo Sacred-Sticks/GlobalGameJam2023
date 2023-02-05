@@ -6,12 +6,10 @@ using UnityEngine.UI;
 
 public class SceneHandler : MonoBehaviour
 {
-    // Indicates which scenarios are successfully completed
-    public static bool tpSolved = false;
-    public static bool survivalSolved = false;
-    public static bool barSolved = false;
     // Is the whiteout still visible?
     public static bool overlayEnabled = false;
+    // At start(), the static properties above will be copied into these publicly accessible variants
+    [SerializeField] public bool overlayOn;
     // The whiteout overlay used for transitions
     [SerializeField] public Image transitionOverlay;
     private Color color;
@@ -19,6 +17,7 @@ public class SceneHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        overlayOn = overlayEnabled;
         if (transitionOverlay != null)
         {
             color = transitionOverlay.color;
@@ -45,6 +44,7 @@ public class SceneHandler : MonoBehaviour
 
     public void CreateTransition(int newScene, bool useWhiteout)
     {
+        overlayEnabled = overlayOn;
         if (useWhiteout && transitionOverlay != null)
         {
             // Fade in the whiteout over a second

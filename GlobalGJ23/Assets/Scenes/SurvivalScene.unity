@@ -668,6 +668,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49b2e602ed02944db88f80ec0882a1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tpComplete: 0
+  survivalComplete: 0
+  barComplete: 0
+  overlayOn: 0
   transitionOverlay: {fileID: 688156792}
 --- !u!114 &1747450947
 MonoBehaviour:
@@ -684,6 +688,7 @@ MonoBehaviour:
   maxTime: 30
   sceneHandler: {fileID: 1747450946}
   freezeVisual: {fileID: 183504555}
+  breathSource: {fileID: 0}
   freezeTime: 30
   timerActive: 1
   timeFinished: 0

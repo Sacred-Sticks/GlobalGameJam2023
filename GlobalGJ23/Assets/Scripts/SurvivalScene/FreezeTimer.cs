@@ -8,6 +8,7 @@ public class FreezeTimer : MonoBehaviour
     [SerializeField] public float maxTime = 180.0f;
     [SerializeField] private SceneHandler sceneHandler;
     [SerializeField] public Image freezeVisual;
+    [SerializeField] public Transform breathSource;
     public float freezeTime;
     public bool timerActive = true;
     public bool timeFinished = false;
@@ -20,6 +21,10 @@ public class FreezeTimer : MonoBehaviour
         if (sceneHandler == null)
         {
             Debug.LogWarning("Scene handler not defined. Transitions will not be performed.");
+        }
+        if (breathSource == null)
+        {
+            Debug.LogWarning("Breath source not defined. Cold breath will not display.");
         }
         if (freezeVisual == null)
         {
@@ -67,6 +72,7 @@ public class FreezeTimer : MonoBehaviour
         timerActive = false;
         color.a = maxOpacity;
         freezeVisual.color = color;
+        sceneHandler.overlayOn = true;
         StartCoroutine(WaitThenTransition());
     }
 
