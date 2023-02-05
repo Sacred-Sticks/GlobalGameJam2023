@@ -445,10 +445,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5bdaeeed0e6a34cae9e58dd51fd61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 2
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1016031098}
+        m_TargetAssemblyTypeName: Health, Assembly-CSharp
+        m_MethodName: playerDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  status: {fileID: 11400000, guid: f7bb8d4ef96e5e54487becafaf9d183d, type: 2}
+--- !u!114 &1472877819 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4917333624232124968, guid: da79ff1a4b1264b499f3110a7baf06a2, type: 3}
+  m_PrefabInstance: {fileID: 4917333623528154625}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5bdaeeed0e6a34cae9e58dd51fd61e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4917333623528154625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -464,6 +488,38 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1016031093}
+    - target: {fileID: 4917333624232124968, guid: da79ff1a4b1264b499f3110a7baf06a2, type: 3}
+      propertyPath: status
+      value: 
+      objectReference: {fileID: 11400000, guid: f7bb8d4ef96e5e54487becafaf9d183d, type: 2}
+    - target: {fileID: 4917333624232124968, guid: da79ff1a4b1264b499f3110a7baf06a2, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4917333624232124968, guid: da79ff1a4b1264b499f3110a7baf06a2, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4917333624232124968, guid: da79ff1a4b1264b499f3110a7baf06a2, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1472877819}
+    - target: {fileID: 4917333624232124968, guid: da79ff1a4b1264b499f3110a7baf06a2, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4917333624232124968, guid: da79ff1a4b1264b499f3110a7baf06a2, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: enemyDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 4917333624232124968, guid: da79ff1a4b1264b499f3110a7baf06a2, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Health, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4917333624232124968, guid: da79ff1a4b1264b499f3110a7baf06a2, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4917333624232124969, guid: da79ff1a4b1264b499f3110a7baf06a2, type: 3}
       propertyPath: m_RootOrder
       value: 3

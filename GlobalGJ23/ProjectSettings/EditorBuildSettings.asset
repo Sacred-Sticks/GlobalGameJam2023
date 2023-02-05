@@ -9,8 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/GrandmasHouse.unity
     guid: 09c224f19acdf39498c88a5fa918614b
   - enabled: 1
-    path: Assets/Scenes/SurvivalScene.unity
-    guid: 4e06897cf01548b46958a20e8bdd42d1
+    path: Assets/Scenes/ToiletPaperScene.unity
+    guid: 725766bd665c32a42a246611aa17798a
+  - enabled: 1
+    path: Assets/Scenes/BarScene.unity
+    guid: 20f46bb95d9a4b0478792803077a2d9a
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ebeeb50da49479c469ecc63655eaabb4, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 0b6f044a893318e4a95c2168d3dfbda3, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 5e72fa597afd0454f9ae42345e8b5def, type: 2}

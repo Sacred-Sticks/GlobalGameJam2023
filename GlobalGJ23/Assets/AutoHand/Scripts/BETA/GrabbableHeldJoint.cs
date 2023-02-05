@@ -14,9 +14,9 @@ namespace Autohand
         [Tooltip("This will multiply the hands strength while holding this grabbable to give it more or less positional priority while holding this joint as a second hand (good to reduce when you dont want this joint having movement priority while being held)")]
         public float heldMassScale = 1f;
         [Space]
-        [Tooltip("The maximum distance this joint is allowed to move in the local positive x-axis")]
+        [Tooltip("The maximum distance this joint is allowed to move in the local positive level-axis")]
         public float xMaxLimit = 0f;
-        [Tooltip("The maximum distance this joint is allowed to move in the local negative x-axis")]
+        [Tooltip("The maximum distance this joint is allowed to move in the local negative level-axis")]
         public float xMinLimit = 0f;
         [Tooltip("This will force the joint back into its center origin based on the given spring strength while not being held along this axis")]
         public float xSpring = 0f;
