@@ -3445,6 +3445,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: d4480187e5e3c2f4e86724a608e32732, type: 2}
+    - target: {fileID: -5736692712548119830, guid: 6cd38ca640854b9468122360cae73d6b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6c27237d12c7a7b43b8543678907a40c, type: 2}
+    - target: {fileID: -5736692712548119830, guid: 6cd38ca640854b9468122360cae73d6b, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8759d271a7a7a9b4b8689a992cb564ee, type: 2}
     - target: {fileID: 919132149155446097, guid: 6cd38ca640854b9468122360cae73d6b, type: 3}
       propertyPath: m_Name
       value: FixedYard
