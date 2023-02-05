@@ -8,7 +8,6 @@ public class Pooling : MonoBehaviour {
 
     [SerializeField] private Vector3 poolStoragePoint;
     [SerializeField] private float poolingDelay;
-    [SerializeField] private GameObject origin;
 
     [SerializeField] private List<GameObject> pool;
     [SerializeField] private Material lineRendererMaterial;
@@ -18,7 +17,9 @@ public class Pooling : MonoBehaviour {
     private int currentIndex;
     private Rigidbody first;
     private Rigidbody last;
-    Vector3 zero = new(0, 0, 0);
+
+    public GameObject origin { get; set; }
+    public bool currectlyActive { get; private set; }
 
     private void Start() {
         GeneratePool();
@@ -29,6 +30,7 @@ public class Pooling : MonoBehaviour {
     }
 
     private IEnumerator RunPooling() {
+        currectlyActive = true;
         yield return new WaitForSeconds(poolingDelay);
         while (currentIndex < poolCount) {
             PullFromPool();
@@ -39,6 +41,7 @@ public class Pooling : MonoBehaviour {
         }
 
         ResetPool();
+        currectlyActive = false;
     }
 
     private void GeneratePool() {

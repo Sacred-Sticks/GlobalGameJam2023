@@ -46,4 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolingTarget: {fileID: 3104903328324567840, guid: 6aeebb0c8231afa479f76cb08364ca11, type: 3}
   poolCount: 50
-  poolStoragePoint: {x: 0, y: 0, z: 0}
+  poolStoragePoint: {x: 0, y: -5, z: 0}
+  poolingDelay: 0.025
+  pool: []
+  lineRendererMaterial: {fileID: 2100000, guid: 94d00ab01d378ec43a3694ae5c0cdb84, type: 2}
+  maxMagnitude: 0.01
