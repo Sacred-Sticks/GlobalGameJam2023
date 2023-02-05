@@ -9,7 +9,7 @@ namespace Autohand.Demo{
 
         [Tooltip("The minimum head->wrist distance required to activate")]
         public float maxDistance = 0.75f;
-        [Tooltip("The angle precisness required to activate; 0 is any angle, 1 is exactly pointed at the face")]
+        [Tooltip("The bookOpenAngle precisness required to activate; 0 is any bookOpenAngle, 1 is exactly pointed at the face")]
         [Range(0, 1)]
         public float anglePreciseness = 0.75f;
         public bool disableWhileHolding = true;

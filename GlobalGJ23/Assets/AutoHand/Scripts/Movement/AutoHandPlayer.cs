@@ -63,7 +63,7 @@ namespace Autohand {
 
         [Tooltip("Whether or not to use snap turning or smooth turning"), Min(0)]
         public RotationType rotationType =  RotationType.snap;
-        [Tooltip("turn speed when not using snap turning - if snap turning, represents angle per snap")]
+        [Tooltip("turn speed when not using snap turning - if snap turning, represents bookOpenAngle per snap")]
         public float snapTurnAngle = 30f;
         public float smoothTurnSpeed = 10f;
 
@@ -97,7 +97,7 @@ namespace Autohand {
         public bool useGrounding = true;
         [EnableIf("useGrounding"), Tooltip("Maximum height that the body can step up onto"), Min(0)]
         public float maxStepHeight = 0.3f;
-        [EnableIf("useGrounding"), Tooltip("Maximum angle the player can walk on"), Min(0)]
+        [EnableIf("useGrounding"), Tooltip("Maximum bookOpenAngle the player can walk on"), Min(0)]
         public float maxStepAngle = 30f;
         [EnableIf("useGrounding"), Tooltip("The layers that count as ground")]
         public LayerMask groundLayerMask;

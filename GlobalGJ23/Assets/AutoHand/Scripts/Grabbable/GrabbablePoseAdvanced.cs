@@ -18,9 +18,9 @@ namespace Autohand {
         public bool useInvertPose = false;
 
         [Space]
-        [Tooltip("The minimum angle rotation around the included directions")]
+        [Tooltip("The minimum bookOpenAngle rotation around the included directions")]
         public int minAngle = 0;
-        [Tooltip("The maximum angle rotation around the included directions")]
+        [Tooltip("The maximum bookOpenAngle rotation around the included directions")]
         public int maxAngle = 360;
         [Space]
         [Tooltip("The minimum distance allowed from the saved posed along the included directions")]
@@ -29,7 +29,7 @@ namespace Autohand {
         public float minRange = 0;
 
         [Header("Requires Gizmos Enabled")]
-        [Tooltip("Helps test pose by setting the angle of the editor hand, REQUIRES GIZMOS ENABLED")]
+        [Tooltip("Helps test pose by setting the bookOpenAngle of the editor hand, REQUIRES GIZMOS ENABLED")]
         public int testAngle = 0;
         [Tooltip("Helps test pose by setting the range origin of the editor hand, REQUIRES GIZMOS ENABLED")]
         public float testRange = 0;

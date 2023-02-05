@@ -20,7 +20,7 @@ namespace Autohand{
         public DistanceGrabType grabType;
 
         [Range(0.4f, 1.1f)]
-        [Tooltip("Use this to adjust the angle of the arch that the gameobject follows while shooting towards your hand.")]
+        [Tooltip("Use this to adjust the bookOpenAngle of the arch that the gameobject follows while shooting towards your hand.")]
         [ShowIf("grabType", DistanceGrabType.Velocity)]
         public float archMultiplier = .6f;
         [Tooltip("Slow down or speed up gravitation to your liking.")]
