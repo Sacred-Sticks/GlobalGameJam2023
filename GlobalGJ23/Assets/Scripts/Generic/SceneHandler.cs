@@ -6,10 +6,6 @@ using UnityEngine.UI;
 
 public class SceneHandler : MonoBehaviour
 {
-    // Is the whiteout still visible?
-    public static bool overlayEnabled = false;
-    // At start(), the static properties above will be copied into these publicly accessible variants
-    [SerializeField] public bool overlayOn;
     // The whiteout overlay used for transitions
     [SerializeField] public Image transitionOverlay;
     private Color color;
@@ -17,23 +13,21 @@ public class SceneHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        overlayOn = overlayEnabled;
         if (transitionOverlay != null)
         {
             color = transitionOverlay.color;
-            if (overlayEnabled)
+            color.a = 1f;
+            transitionOverlay.color = color;
+            while (transitionOverlay.color.a > 0f)
             {
-                while (transitionOverlay.color.a > 0f)
-                {
-                    float timePassed = Time.deltaTime;
-                    color.a -= timePassed;
-                    transitionOverlay.color = color;
-                    timePassed = 0f;
-                }
+                float timePassed = Time.deltaTime;
+                color.a -= timePassed;
+                transitionOverlay.color = color;
+                timePassed = 0f;
+                Debug.Log(transitionOverlay.color.a);
             }
         }
         else Debug.LogWarning("Transition overlay not specified. No visuals will be used for scene transitions.");
-        overlayEnabled = false;
     }
 
     // Update is called once per frame
@@ -42,13 +36,11 @@ public class SceneHandler : MonoBehaviour
         
     }*/
 
-    public void CreateTransition(int newScene, bool useWhiteout)
+    public void CreateTransition(int newScene)
     {
-        overlayEnabled = overlayOn;
-        if (useWhiteout && transitionOverlay != null)
+        if (transitionOverlay != null)
         {
             // Fade in the whiteout over a second
-            overlayEnabled = true;
             while (transitionOverlay.color.a < 1f)
             {
                 float timePassed = Time.deltaTime;
